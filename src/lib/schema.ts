@@ -26,5 +26,6 @@ export const ChecklistSchema = z.object({
 })
 
 export const ChecklistItemSchema = z.object({
-  itemName: z.string(),
+  itemName: z.string().optional(),
+  name: z.string().optional(),
 })

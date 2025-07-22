@@ -12,7 +12,8 @@ const Home = () => {
     try {
       const response = await axiosInstance.get('/checklist');
       console.log('Fetched notes:', response.data.data);
-      return response.data.data;
+      
+      setNotes(response.data.data);
     } catch (error) {
       console.error('Failed to fetch notes:', error);
       return [];
@@ -20,22 +21,17 @@ const Home = () => {
   }
 
   useEffect(() => {
-    const loadNotes = async () => {
-      const fetchedNotes = await fetchNotes();
-      setNotes(fetchedNotes);
-    };
-
-    loadNotes();
+    fetchNotes();
   }, []);
 
   return (
     <AppLayout>
       <main className="flex-1 p-4 md:p-8 overflow-y-auto">
-        <ChecklistInput />
+        <ChecklistInput refetch={fetchNotes}/>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {notes.map((note) => (
-            <ChecklistCard key={note.id} note={note} />
+            <ChecklistCard key={note.id} note={note} refetch={fetchNotes} />
           ))}
         </div>
       </main>

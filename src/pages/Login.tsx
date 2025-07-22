@@ -80,11 +80,13 @@ const Login = () => {
           </Button>
           <Button
             type="button"
+            variant="outline"
             className='w-full'
             onClick={() => navigate('/register')}
             disabled={form.formState.isSubmitting}
           >
-            Register</Button>
+            Register
+          </Button>
         </form>
       </Form>
     </AuthLayout>

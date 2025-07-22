@@ -100,7 +100,14 @@ const Register = () => {
             )}
           />
           <Button type="submit" className='w-full'>Register</Button>
-          <Button type="button" className='w-full' onClick={() => navigate('/login')}>Login</Button>
+          <Button
+            type="button"
+            variant="outline"
+            className='w-full'
+            onClick={() => navigate('/login')}
+          >
+            Login
+          </Button>
         </form>
       </Form>
     </AuthLayout>
